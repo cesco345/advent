@@ -1,25 +1,22 @@
 import { StatusBar } from "expo-status-bar";
 import { FlatList, StyleSheet, Text, View, SafeAreaView } from "react-native";
+import DayListItem from "./src/components/core/DayListItem";
 
 const days = [...Array(31).keys()].map((val, index) => index + 1);
 
 export default function App() {
   return (
-    <SafeAreaView style={styles.container}>
+    <View style={styles.container}>
       <FlatList
         data={days}
         contentContainerStyle={styles.content}
         columnWrapperStyle={styles.column}
         numColumns={3}
-        renderItem={({ item }) => (
-          <View style={styles.box}>
-            <Text style={styles.text}>{item}</Text>
-          </View>
-        )}
+        renderItem={({ item }) => <DayListItem />}
       />
 
       <StatusBar style="auto" />
-    </SafeAreaView>
+    </View>
   );
 }
 
@@ -34,22 +31,5 @@ const styles = StyleSheet.create({
   },
   column: {
     gap: 10,
-  },
-  box: {
-    backgroundColor: "#F9EDE3",
-
-    aspectRatio: 1,
-    width: 100,
-    //height: 100,
-    justifyContent: "center",
-    alignItems: "center",
-    borderWidth: StyleSheet.hairlineWidth,
-    borderColor: "#9b4521",
-    borderRadius: 20,
-    padding: 10,
-  },
-  text: {
-    color: "#9b4521",
-    fontSize: 50,
   },
 });
