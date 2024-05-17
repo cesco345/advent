@@ -1,4 +1,11 @@
-import { View, Text, StyleSheet } from "react-native";
+import {
+  View,
+  Text,
+  StyleSheet,
+  SafeAreaView,
+  Platform,
+  StatusBar,
+} from "react-native";
 
 type DayListItemProps = {
   day: number;
@@ -6,14 +13,18 @@ type DayListItemProps = {
 
 export default function DayListItem({ day: day }: DayListItemProps) {
   return (
-    <View>
+    <SafeAreaView style={styles.safeArea}>
       <View style={styles.box}>
         <Text style={styles.text}>{day} </Text>
       </View>
-    </View>
+    </SafeAreaView>
   );
 }
 const styles = StyleSheet.create({
+  safeArea: {
+    flex: 1,
+    paddingTop: Platform.OS === "android" ? StatusBar.currentHeight : 20,
+  },
   box: {
     backgroundColor: "#F9EDE3",
 
@@ -30,5 +41,6 @@ const styles = StyleSheet.create({
   text: {
     color: "#9b4521",
     fontSize: 50,
+    fontFamily: "Inter_900Black",
   },
 });
