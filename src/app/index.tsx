@@ -7,7 +7,7 @@ import {
   SafeAreaView,
   ActivityIndicator,
 } from "react-native";
-import DayListItem from "./src/components/core/DayListItem";
+import DayListItem from "../../src/components/core/DayListItem";
 import { useFonts, Inter_900Black } from "@expo-google-fonts/inter";
 import * as SplashScreen from "expo-splash-screen";
 
@@ -15,7 +15,7 @@ SplashScreen.preventAutoHideAsync();
 
 const days = [...Array(31).keys()].map((val, index) => index + 1);
 
-export default function App() {
+export default function HomeScreen() {
   const [fontsLoaded, fontError] = useFonts({
     Inter_900Black,
   });

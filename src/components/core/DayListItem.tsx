@@ -1,46 +1,34 @@
-import {
-  View,
-  Text,
-  StyleSheet,
-  SafeAreaView,
-  Platform,
-  StatusBar,
-} from "react-native";
+import { Text, View, StyleSheet, Pressable } from "react-native";
+import { Link } from "expo-router";
 
-type DayListItemProps = {
+type DayListItem = {
   day: number;
 };
 
-export default function DayListItem({ day: day }: DayListItemProps) {
+export default function DayListItem({ day }: DayListItem) {
   return (
-    <SafeAreaView style={styles.safeArea}>
-      <View style={styles.box}>
-        <Text style={styles.text}>{day} </Text>
-      </View>
-    </SafeAreaView>
+    <Link href={`/day${day}`} asChild>
+      <Pressable style={styles.box}>
+        <Text style={styles.text}>{day}</Text>
+      </Pressable>
+    </Link>
   );
 }
+
 const styles = StyleSheet.create({
-  safeArea: {
-    flex: 1,
-    paddingTop: Platform.OS === "android" ? StatusBar.currentHeight : 20,
-  },
   box: {
     backgroundColor: "#F9EDE3",
-
+    flex: 1,
     aspectRatio: 1,
-    width: 100,
-    //height: 100,
-    justifyContent: "center",
-    alignItems: "center",
     borderWidth: StyleSheet.hairlineWidth,
     borderColor: "#9b4521",
     borderRadius: 20,
-    padding: 10,
+    justifyContent: "center",
+    alignItems: "center",
   },
   text: {
     color: "#9b4521",
-    fontSize: 50,
+    fontSize: 75,
     fontFamily: "Inter_900Black",
   },
 });
