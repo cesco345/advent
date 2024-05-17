@@ -1,10 +1,14 @@
 import { View, Text, StyleSheet } from "react-native";
 
-export default function DayListItem() {
+type DayListItemProps = {
+  day: number;
+};
+
+export default function DayListItem({ day: day }: DayListItemProps) {
   return (
     <View>
       <View style={styles.box}>
-        <Text style={styles.text}>1 </Text>
+        <Text style={styles.text}>{day} </Text>
       </View>
     </View>
   );

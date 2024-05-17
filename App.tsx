@@ -12,7 +12,7 @@ export default function App() {
         contentContainerStyle={styles.content}
         columnWrapperStyle={styles.column}
         numColumns={3}
-        renderItem={({ item }) => <DayListItem />}
+        renderItem={({ item }) => <DayListItem day={item} />}
       />
 
       <StatusBar style="auto" />
